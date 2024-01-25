@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://bniqp2sx1iclb"]
+
+[ext_resource type="Script" path="res://Personajes/jugador.gd" id="1_xc05e"]
+[ext_resource type="Script" path="res://Personajes/Vision.gd" id="2_fahim"]
+[ext_resource type="Texture2D" uid="uid://dkm73igmqerha" path="res://Recursos/Interfaz/crosshair_dot.png" id="3_0h7lq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lahhq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3ftqx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7r2mu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lbgnf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8q21j"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Jugador" type="CharacterBody3D"]
+script = ExtResource("1_xc05e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_lahhq")
+
+[node name="Cuerpo" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.791723, 0, 0, 0, 0.756905, 0, 0, 0, 0.545792, 0, 0.780583, 0)
+cast_shadow = 3
+mesh = SubResource("CapsuleMesh_3ftqx")
+
+[node name="Cabeza" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.400303, 0, 0, 0, 0.396383, 0, 0, 0, 0.416281, 0, 1.74707, 0)
+cast_shadow = 3
+mesh = SubResource("SphereMesh_7r2mu")
+
+[node name="Cuello" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.53269, 0)
+cast_shadow = 3
+mesh = SubResource("CylinderMesh_lbgnf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74885, -0.0889797)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -6.55671e-08, -1, 0, 1.5, -4.37114e-08, 0, 0, 0)
+script = ExtResource("2_fahim")
+
+[node name="Label" type="Label" parent="Camera3D/RayCast3D"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.902
+anchor_right = 0.5
+anchor_bottom = 0.902
+offset_left = -1.0
+offset_top = -11.496
+offset_bottom = 11.504
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_8q21j")
+
+[node name="Mano" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.364, -0.51885, -0.46902)
+
+[node name="Puntero" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture = ExtResource("3_0h7lq")
+expand_mode = 1

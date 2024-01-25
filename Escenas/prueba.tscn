@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://bghdgy2jft3qc"]
+
+[ext_resource type="PackedScene" uid="uid://bniqp2sx1iclb" path="res://Personajes/jugador.tscn" id="1_ftuu0"]
+[ext_resource type="PackedScene" uid="uid://51ifj7dl8f6l" path="res://door_brown_b.blend" id="2_xesds"]
+[ext_resource type="Texture2D" uid="uid://cpfktsmm4sxiw" path="res://textures/door_double_brown_left.png" id="3_edqu3"]
+[ext_resource type="PackedScene" uid="uid://b4mwixo72bth7" path="res://Recursos/Objetos/Vela.tscn" id="4_0tps4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kbf6v"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wepg8"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="Environment" id="Environment_y0xgc"]
+background_mode = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_lw3pc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_av1dq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfwfe"]
+albedo_texture = ExtResource("3_edqu3")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_akgnh"]
+data = PackedVector3Array(0.4554, -0.9449, -0.0475, -0.4554, -0.9449, 0.0475, 0.4579, -0.9449, 0.0032, 0.4554, -0.9449, -0.0475, -0.4579, -0.9449, -0.0032, -0.4554, -0.9449, 0.0475, 0.4554, 0.9449, -0.0475, -0.4554, 0.9449, 0.0475, -0.4579, 0.9449, -0.0032, 0.4554, 0.9449, -0.0475, 0.4579, 0.9449, 0.0032, -0.4554, 0.9449, 0.0475, 0.4554, -0.9449, -0.0475, 0.4579, 0.9449, 0.0032, 0.4554, 0.9449, -0.0475, 0.4554, -0.9449, -0.0475, 0.4579, -0.9449, 0.0032, 0.4579, 0.9449, 0.0032, 0.4579, -0.9449, 0.0032, -0.4554, 0.9449, 0.0475, 0.4579, 0.9449, 0.0032, 0.4579, -0.9449, 0.0032, -0.4554, -0.9449, 0.0475, -0.4554, 0.9449, 0.0475, -0.4554, -0.9449, 0.0475, -0.4579, 0.9449, -0.0032, -0.4554, 0.9449, 0.0475, -0.4554, -0.9449, 0.0475, -0.4579, -0.9449, -0.0032, -0.4579, 0.9449, -0.0032, 0.4554, 0.9449, -0.0475, -0.4579, -0.9449, -0.0032, 0.4554, -0.9449, -0.0475, 0.4554, 0.9449, -0.0475, -0.4579, 0.9449, -0.0032, -0.4579, -0.9449, -0.0032)
+
+[node name="Main" type="Node3D"]
+
+[node name="Jugador" parent="." instance=ExtResource("1_ftuu0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Suelo2" type="MeshInstance3D" parent="."]
+transform = Transform3D(23.1177, 0, 0, 0, 0.0152038, 0, 0, 0, 24.8025, 0, 0, 0)
+mesh = SubResource("BoxMesh_kbf6v")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Suelo2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Suelo2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wepg8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y0xgc")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.7171, -6.85938)
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25472, 6.89453)
+light_color = Color(1, 0.788235, 0.301961, 1)
+light_energy = 0.2
+light_indirect_energy = 0.2
+light_volumetric_fog_energy = 0.2
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OmniLight3D"]
+transform = Transform3D(0.344654, 0, 0, 0, 0.434767, 0, 0, 0, 0.360094, 0, -0.281121, 0)
+mesh = SubResource("SphereMesh_lw3pc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="OmniLight3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniLight3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("SphereShape3D_av1dq")
+
+[node name="door_brown_b" parent="." groups=["Objeto"] instance=ExtResource("2_xesds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32566, 1.03692, 6.81472)
+
+[node name="Door_Shed_A" parent="door_brown_b" index="0"]
+transform = Transform3D(-0.96565, 0, 0.259845, 0, 1, 0, -0.259845, 0, -0.96565, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_cfwfe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="door_brown_b/Door_Shed_A" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door_brown_b/Door_Shed_A/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_akgnh")
+
+[node name="Vela" parent="." groups=["Objeto"] instance=ExtResource("4_0tps4")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -6.9031, 0.0076019, -0.535081)
+
+[editable path="door_brown_b"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bevkjpm0xuy4p"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x0vcq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fgcv4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2grlr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ghy6g"]
+
+[node name="Armario" type="Node3D"]
+
+[node name="TablaTrasera" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 0.1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_x0vcq")
+
+[node name="BaldaSuperior" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 1.5, 0, 2.95067, 0.7)
+mesh = SubResource("BoxMesh_fgcv4")
+
+[node name="BaldaInferior" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 1.5, 0, 0.05, 0.7)
+mesh = SubResource("BoxMesh_fgcv4")
+
+[node name="BaldaIzquierda" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 1.5, 1, 1.5, 0.7)
+mesh = SubResource("BoxMesh_2grlr")
+
+[node name="BaldaIzquierda2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 1.5, -1, 1.5, 0.7)
+mesh = SubResource("BoxMesh_2grlr")
+
+[node name="EsqueletoPuertas" type="Skeleton3D" parent="."]
+
+[node name="Puerta1" type="MeshInstance3D" parent="EsqueletoPuertas"]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 0.1, 0.5, 1.5, 1.5)
+mesh = SubResource("BoxMesh_ghy6g")
+
+[node name="Puerta2" type="MeshInstance3D" parent="EsqueletoPuertas"]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 0.1, -0.5, 1.5, 1.5)
+mesh = SubResource("BoxMesh_ghy6g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
